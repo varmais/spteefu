@@ -20,6 +20,7 @@ class LoginStore extends BaseStore {
                 break;
 
             case LOGOUT_USER:
+                this._accessToken = null;
                 this.emitChange();
                 break;
 

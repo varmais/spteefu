@@ -1,27 +1,15 @@
 import React from 'react';
+import Uri from 'jsuri';
 import LoginActions from '../actions/LoginActions';
 import AuthService from '../services/AuthService';
 
 class Login extends React.Component {
 
-    constructor() {
-        super();
-        var token = this._getAccessTokenParameter();
+    componentDidMount() {
+        var token = new Uri('?' + window.location.hash.split('#/')[1]).getQueryParamValue('access_token');
         if (token) {
-            console.log(token);
-            LoginActions.loginUser(token);
+            LoginActions.loginUser(token);    
         }
-    }
-
-    _getAccessTokenParameter() {
-        var token;
-        window.location.search.substring(1).split('&').forEach((pair) => {
-            pair = pair.split('=');
-            if (pair[0] === 'code') {
-                token = pair[1];
-            }
-        });
-        return token;
     }
 
     handleLogin(ev) {

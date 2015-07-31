@@ -1,8 +1,4 @@
-import {
-    AUTH_URL,
-    CALLBACK_URL,
-    CLIENT_ID
-} from '../constants/LoginConstants';
+import { AUTH_URL, CALLBACK_URL, CLIENT_ID } from '../constants/LoginConstants';
 import LoginActions from '../actions/LoginActions';
 
 class AuthService {
@@ -12,7 +8,7 @@ class AuthService {
         var cb = encodeURIComponent(CALLBACK_URL);
         var scope = encodeURIComponent(scopes.join(' '));
 
-        return `${AUTH_URL}?client_id=${CLIENT_ID}&redirect_uri=${cb}&scope=${scope}&response_type=code`;
+        return `${AUTH_URL}?client_id=${CLIENT_ID}&redirect_uri=${cb}&scope=${scope}&response_type=token`;
     }
 
     login() {

@@ -1,12 +1,17 @@
 import React from 'react';
+import { RouteHandler } from 'react-router';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import LoginStore from '../stores/LoginStore';
 
 class Spteefu extends React.Component {
-    
+
     constructor() {
         super();
+        this.state = this._getLoginState();
+    }
+
+    componentDidMount() {
         this.state = this._getLoginState();
     }
 
@@ -19,7 +24,9 @@ class Spteefu extends React.Component {
     render() {
         var component = this.state.userLoggedIn ? <Dashboard /> : <Login />
         return (
-            component
+            <div>
+                {component}
+            </div>
         );
     }
 }

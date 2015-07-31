@@ -6,9 +6,14 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var connect = require('gulp-connect');
 
 var jsSrc = 'src/**/*.js';
 var cssSrc = 'src/**/*.scss';
+
+gulp.task('connect', function() {
+    connect.server();
+});
 
 gulp.task('js', function () {
 
@@ -40,4 +45,4 @@ gulp.task('watch', function () {
     gulp.watch(cssSrc, ['css']);
 });
 
-gulp.task('default', ['js', 'css', 'watch']);
+gulp.task('default', ['js', 'css', 'watch', 'connect']);

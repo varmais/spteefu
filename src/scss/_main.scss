@@ -1,3 +1,14 @@
 body {
-    height: $test;
+    padding-top: 61px;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: $sidebarWidth;
+    height: 100%;
+}
+
+.dashboard {
+    padding-left: $sidebarWidth;
 }
