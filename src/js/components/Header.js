@@ -8,9 +8,7 @@ class Header extends React.Component {
                     <div className="navbar-header">
                         <span className="navbar-brand">Spteefu</span>
                     </div>
-                    <div className="pull-right">
-                        UserName n' shit
-                    </div>
+                    <div className="pull-right">Username?</div>
                 </div>
             </nav>
         );

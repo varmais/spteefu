@@ -12,3 +12,16 @@ body {
 .dashboard {
     padding-left: $sidebarWidth;
 }
+
+.album {
+    cursor: pointer;
+
+    img {
+        max-width: 100%;
+    }
+
+    p {
+        font-size: 25px;
+    }
+
+}

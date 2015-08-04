@@ -6641,4 +6641,11 @@ body {
 .dashboard {
   padding-left: 250px; }
 
+.album {
+  cursor: pointer; }
+  .album img {
+    max-width: 100%; }
+  .album p {
+    font-size: 25px; }
+
 /*# sourceMappingURL=styles.css.map */
