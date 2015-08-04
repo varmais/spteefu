@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import AlbumList from './AlbumList';
 import ArtistStore from '../stores/ArtistStore';
 import ArtistService from '../services/ArtistService';
 import AlbumStore from '../stores/AlbumStore';
@@ -11,12 +12,13 @@ class Dashboard extends React.Component {
     constructor() {
         super();
         this.state = {
-            artists: this._getArtists()
+            artists: this._getArtists(),
+            albums: this._getAlbums()
         };
     }
 
     componentDidMount() {
-        if (!this.state.artists) {
+        if (!this.state.artists.length) {
             this._requestArtists();
         }
 
@@ -30,11 +32,9 @@ class Dashboard extends React.Component {
     }
 
     _onChange() {
-
-        this.setState({
-            artists: this._getArtists(),
-            albums: this._getAlbums()
-        });
+        var artists = this._getArtists();
+        var albums = this._getAlbums();
+        this.setState({artists, albums});
     }
 
     _requestArtists() {
@@ -50,30 +50,11 @@ class Dashboard extends React.Component {
     }
 
     render() {
-
-        var rows = [];
-        var albums = this.state.albums;
-
-        if (albums && albums.items && albums.items.length) {
-            albums.items.forEach((album, index) => {
-                rows.push(<div key={index} className="album">{album.name}</div>);
-            });
-        }
-
         return (
             <div className="dashboard-container">
                 <Header />
                 <Sidebar artists={this.state.artists} />
-                <div className="dashboard">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-xs-12 dashboard-content">
-                                <h1>Welcome to Spteefu!</h1>
-                                {rows}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <AlbumList albums={this.state.albums} />
             </div>
         );
     }

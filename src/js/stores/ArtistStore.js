@@ -28,7 +28,11 @@ class ArtistStore extends BaseStore {
     }
 
     get artists() {
-        return this._artists;
+        var artists = this._artists;
+        if (artists && artists.items && artists.items.length) {
+            return artists.items;
+        }
+        return [];
     }
 }
 

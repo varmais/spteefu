@@ -8,20 +8,15 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        var items;
         var rows = [];
-        
-        if (this.props.artists) {
-            items = this.props.artists.items;
-            if (items && items.length) {
-                items.forEach((artist, index) => {
-                    rows.push(
-                        <li key={index} className="list-group-item" onClick={this.handleClick.bind(this, artist.id)}>
-                            {artist.name}
-                        </li>);
-                });    
-            }
-        }
+
+        this.props.artists.forEach((artist, index) => {
+            rows.push(
+                <li key={index} className="list-group-item" onClick={this.handleClick.bind(this, artist.id)}>
+                    {artist.name}
+                </li>
+            );
+        });    
 
         return (
             <div className="sidebar">

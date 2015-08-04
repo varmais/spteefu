@@ -28,7 +28,11 @@ class AlbumStore extends BaseStore {
     }
 
     get albums() {
-        return this._albums;
+        var albums = this._albums;
+        if (albums && albums.items && albums.items.length) {
+            return albums.items;
+        }
+        return [];
     }
 }
 
